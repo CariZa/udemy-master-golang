@@ -1065,6 +1065,8 @@ Go does implicit conversion of types:
 
 These const inherit types because its needed by the way we declared them:
 
+![Variable types](./images/1.%20Nanosecond%20Duration.jpg)
+
 math.Round
 
 	rounding float values
@@ -1409,6 +1411,12 @@ Now you won't get the shadowing that you got before when using the :=
 
 To tell xcode to help detect shadowing:
 
+![Commad Palette](./images/2.%20ction%20View%20Go%20Debug%20Terminal%20Window.jpg)
+
+![Settings](./images/3.%20Preferences%20Open%20Settings%20(JSON).jpg)
+
+![More settings](./images/4.%20ser%20Settings.jpg)
+
 ```
 "go.lintOnSave": "package",
 "go.vetOnSave": "package",
@@ -1419,6 +1427,12 @@ To tell xcode to help detect shadowing:
 ```
 
 Summary:
+
+![Simple statement](./images/5.%20simple%20statement.jpg)
+
+![Scopes](./images/6.%20scopes.jpg)
+
+![Shadowing gotcha](./images/7.%20shadowing%20gotcha.jpg)
 
 ### Switch
 
@@ -1593,7 +1607,7 @@ Switch shortened example:
 
 In go there is only 1 loop, the for loop
 
-
+![Loop syntax](./images/8.%20init%20statement.jpg)
 
 For
 
@@ -1826,7 +1840,15 @@ Another example with os.Args:
 
 Summary for loops:
 
-￼// TODO
+![for loop](./images/9.%20for.jpg)
+
+![for with break](./images/10.%20break.jpg)
+
+![for with continue](./images/11.%20continue.jpg)
+
+![nested for loops](./images/12.%20nested%20loops.jpg)
+
+![for with range](./images/13.%20for%20range.jpg)
 
 ### Randomization
 
@@ -1924,6 +1946,11 @@ query:
 }
 ```
 
+Another example:
+
+![labeling examples](./images/14.%20queries.jpg)
+
+![label example](./images/15.%20range%20query%20%7B.jpg)
 
 Using GoTo:
 
@@ -1948,7 +1975,12 @@ Note: Goto can be very dangerous, so be wary of using it, but it can be used to 
 
 ## Composite values
 
-Composite value can store multiple values
+Composite value 
+- can store multiple values
+
+![Composite Types](./images/16.%20PART%20IV.jpg)
+
+Types
 
 - Arrays
 - Slices
@@ -2086,7 +2118,7 @@ or
 
 Composite Literal used to create composite values
 
-### Elipses operator
+#### Elipses operator
 
 Elipses operator
 
@@ -2143,6 +2175,8 @@ But you can't compare:
 	[3]int{6, 9, 3} with [2]int{6, 9} 
 
 because one is type [3]int and the other [2]int - different types
+
+![](./images/17.%20Arrays%20are%20not%20comparable%20when%20their%20types%20are%20different.jpg)
 
 Assigned arrays are copied into a new array:
 
@@ -2283,7 +2317,7 @@ BUT you can convert them, because they have the same underlying types:
 
 	bookcase {6, 9, 3} == bookcase(cabinet{6, 9, 3})
 
-### Custom types
+### Custom array types
 
 Creating types:
 
@@ -2305,7 +2339,29 @@ This is an important layer of knowledge to have to understand the go type system
 
 Recap arrays
 
-￼// TODO
+![](./images/18.%20a%20Array%20is%20a%20collection%20of%20elements.jpg)
+
+![](./images/19.%20can%20access%20array%20elements%20using%20index%20expressions.jpg)
+
+![](./images/20.%20How%20many%20elements.jpg)
+
+![](./images/21.%20This%20is%20the%20type%20of%20the%20array.jpg)
+
+![](./images/22.%20Array%20Literals.jpg)
+
+![](./images/23.%20Ellipsis....jpg)
+
+![](./images/24.%20Keyed%20Elements.jpg)
+
+![](./images/25.%20Multi-Dimensional%20Arrays.jpg)
+
+![](./images/26.%20Copied%20array%20and%20the%20Original%20array%20are%20not%20connected.jpg)
+
+![](./images/27.%20Different%20types%20of%20arrays%20are%20neither%20comparable%20nor%20assignable.jpg)
+
+![](./images/28.%20An%20unnamed%20composite%20type's%20underlying%20type%20is%20itself!.jpg)
+
+![](./images/29.%20Unnamed%20and%20Named%20typed%20values%20are%20comparable.jpg)
 
 
 Digital clock example program
@@ -2718,6 +2774,8 @@ A slice does not create a new backing array, just a instance of the array elemen
 
 These all refer to the same backing array (not new arrays)
 
+![](./images/30.%20BACKING%20ARRAY.jpg)
+
 This shared approach makes slicing fast and cheap.
 
 When you manually create an array, and then slice it - it becomes the backing array of the new slice.
@@ -2759,13 +2817,19 @@ Slice headers:
 
 Slice = SliceHeader, it's a tiny data structure that describe its backing array
 
+![](./images/31.%20SLICE%20HEADER.jpg)
+
 This slice has a pointer field starting at the 35:
 
-[todo?]
+![](./images/32.%20SLICE%20HEADER%202.jpg)
+
+![](./images/33.%20SLICE%20HEADER%203.jpg)
+
+![](./images/34.%20NIL%20SLICE.jpg)
 
 More info on how slices are created:
 
-￼[todo?]
+![](./images/35.%20Source%20file%20srcruntimeslice.jpg)
 
 Notice it's the header info, with just a pointer to the array
 
@@ -2888,6 +2952,8 @@ Full slice expressions
 Limit the slice size with cap
 
 One use case for this is if you overwrite the cap - and then append you will create a new backing array (instead of overwriting the both slices)
+
+![](./images/36.%20func%20main().jpg)
 ￼
 If the cap hadn't been updated, then index 3 and 4 of the original slice would just have been overwrittern. 
 Editing the cap helped create a new backing array and then the original values were not overwritten
@@ -2909,15 +2975,21 @@ Set capacity: make
 
 Create a backing array with a larger capaciity with make:
 
+![](./images/37.%20s.PrintBacking.jpg)
+
 The only problem is, append adds elements after the length of the slice.
 
 The trick is to create a slice with 0 length and capacity you want:
+
+![](./images/38.%20func%20main()%202.jpg)
 
 Notice: 
 
 	upTasts := make([]string, 0, len(tasks))
 
 ### Copy
+
+![](./images/39.%20It%20returns%20the%20number%20of%20copied%20elements.jpg)
 
 A big note here, copy will only copy over a max of the length of the starting array it's copying to. You can't create a longer slice with copy - so you will loose overlapping copied elements if the starting slice is shorted than the copied slice.
 
@@ -2968,6 +3040,10 @@ Note: elipses not used - you're appending the whole slice not slice elements
 
 A better way to do this:
 
+![](./images/40.%20content.jpg)
+
+![](./images/41.%20for%20i%2C%20line.jpg)
+
 Creating a fetch function to retrieve data from a "file":
 
 [todo ... add code]
@@ -2980,7 +3056,15 @@ What are the length and capacity of the 'part' slice?
 2. part  := lyric[1:3:5]
 
 
-General Formula: `[low:high:max]` => `length = high - max` and `capacity = max - low`. `lyric[1:3]` is `["me" "my"]`. `lyric[1:3:5]` is `["me" "my" "silver" "lining"]`. So, `[1:3]` is the returned slice, length: 2. `[1:3:5]` limits the capacity to four because after the 1st element there are only four more elements.
+General Formula: 
+
+	`[low:high:max]` => `length = high - max` 
+	
+and 
+
+`capacity = max - low`. `lyric[1:3]` is `["me" "my"]`. `lyric[1:3:5]` is `["me" "my" "silver" "lining"]`. 
+
+So, `[1:3]` is the returned slice, length: 2. `[1:3:5]` limits the capacity to four because after the 1st element there are only four more elements.
 
 Copy notes:
 
@@ -3106,6 +3190,8 @@ You can represent a character with a run eliteral
 - numbers and rune literals are the same thing?
 - unicode code point - a number that can represent a character
 
+![](./images/42.%20Rune%20Literals.jpg)
+
 Rune literals are numeric code points
 - they are numbers
 - eg 65 = code point for "A"
@@ -3178,7 +3264,7 @@ If you range through a string with runes, you'll notice the indexes skip in cert
 
 Eg
 
-￼
+￼![](./images/43.%20str%5B%200%5D%20%3D%2059.jpg)
 
 This makes it tricky when you want to retrieve a rune from a string slice - 
 - str[1] will only return part of the rune
@@ -3548,6 +3634,8 @@ Field name and types are fixed at compile-time - no new field names or types can
 
 Field values belong to runtime, so values can be changed during runtime 
 
+![](./images/44.%20SLICE%20%26%20MAP.jpg)
+
 Declaring a struct with a struct literal:
 
 	type VideoGame struct {
@@ -3792,6 +3880,8 @@ moby.title...
 
 Note you still have to use the explicit fields in the struct literal. No magic there.
 
+![](./images/45.%20ANONYMOUS%20FIELDS.jpg)
+
 Log Parser
 - Initially setup in Section 11
 - Then revisited and improved with structs in section 12: 
@@ -3862,9 +3952,13 @@ Advanced:
 
 structs can have field tags (like additional instructions)
 
+![](./images/46.%20FIELD%20TAGS.jpg)
+
 Field tags are metadata about the field. Mostly used for controlling the encoding/decoding behaviour. 
 
 Field tags are string literals. They have a key value structure, the value is comma separated options.
+
+![](./images/47.%20FIELD%20TAGS%202.jpg)
 
 More info on field tags:
 https://www.youtube.com/watch?v=_SCRvMunkdA
@@ -3934,6 +4028,8 @@ Pointers stores memory addresses
 
 Declaring package variables is a bad practice (like a global value in the package)
 
+![](./images/48.%20thre.com.jpg)
+
 Go constructor pattern
 
 This is called the constructor pattern.
@@ -3949,6 +4045,8 @@ eg
 Naked Return
 
 Returns the named result values automatically
+
+![](./images/49.%20NAKED%20RETURN.jpg)
 ￼
 ^ go does this behind the scenes without the vars parts (the var does not need to be declared) - look into this a bit more 
 
@@ -3996,16 +4094,30 @@ Pointer types
 
 Pointers have types too
 
+![](./images/50.%20var%20counter%20byte%20%3D%20100.jpg)
+
 - *type
 - eg *byte
 
 Indirection operator
 
+![](./images/51.%20INDIRECTION%20OPERATOR.jpg)
+
 Note if you change the V value you don't change the counter
+
+![](./images/52.%20INDIRECTION%20OPERATOR%202.jpg)
 
 A pointer value will always point to the latest value of the value it points to
 
+![](./images/53.%20ALWAYS%20FRESH.jpg)
+
 Note, the counter variable, when updated can update the value that it is pointing to:
+
+![](./images/54.%20SPOOKY%20ACTION%20AT%20A%20DISTANCE.jpg)
+
+![](./images/55.%20SUMMARY.jpg)
+
+![](./images/56.%20SUMMARY%202.jpg)
 
 Using pointers with functions
 
@@ -4035,6 +4147,8 @@ Structs work well with pointers
 
 Methods and interfaces
 
+![](./images/57.%20DATA%20%2B%20BEHAVIOR.jpg)
+
 Attaching methods to a type
 
 Value Receiver
@@ -4046,6 +4160,11 @@ Attach the printBook() method to the book type.
     }
 
 (b book) -> input parameter / receiver
+
+![](./images/58.%20VALUE%20RECEIVER.jpg)
+
+![](./images/59.%20DATA%20%2B%20BEHAVIOR%202.jpg)
+
 
 Pointer Receivers
 
@@ -4075,10 +4194,15 @@ eg
 
 Go automatically behind the scenes passes through the type as the first argument of a method.
 
+![](./images/60.%20Manually%20passes%20mobydick%20to%20print.jpg)
+
+
 Method vs Function
 
 A method belongs to a type
 A function belongs to a package
+
+![](./images/61.%20POINTER%20RECEIVER.jpg)
 
 Eg
 
@@ -4156,6 +4280,8 @@ Now the program runs and uses a lot less memory and runs faster.
 Attachable types
 
 Methods can be attached to almost any type, not just structs.
+
+![](./images/62.%20ATTACHABLE%20TYPES.jpg)
 
 You can keep extending your application with more methods and types.
 
@@ -4260,7 +4386,13 @@ Note, you can't call any other methods besides the interface mthods
 
 eg if the struct has other methods normally, even though you assigned the struct to the interface and the struct has many more methods, you can only call the methods that the interface has declared in itself 
 
+![](./images/63.%20You%20can%20no%20longer%20access%20all%20the%20methods.jpg)
+
+![](./images/64.%20DYNAMIC%20VALUE.jpg)
+
 Just a note, the print() is also considered a dynamic value because you can change it during runtime, just as long as it satisfies the interface
+
+![](./images/65.%20DYNAMIC%20VALUE%202.jpg)
 
 An interface has 2 parts
 - Dynamic value 
@@ -4273,6 +4405,10 @@ eg
 
 	p.(*game)
 
+![](./images/66.%20EXTRACTION.jpg)
+
+![](./images/67.%20The%20interface%20value.jpg)
+
 Doesn't have to be a pointer type, it needs to match the original type
 
 	eg p.(book)
@@ -4281,9 +4417,11 @@ You can still add multiple methods to the interface, you just don't have to add 
 
 Some examples of how you can handle different types 
 
-[todo?]
+![](./images/68.%20func%20(1%20list)%20discount%20(ratio%20float64)%20%7B.jpg)
 
 You can also rewrite more compact:
+
+![](./images/69.%20func%20(l%20list)%20discount%20(ratio%20float64)%20%7B.jpg)
 
 Notice the multi "it" variables names, duplicating names is quite common in go. 
 
@@ -4367,7 +4505,7 @@ Detect and extract the dynamic value from an interface value
 
 (v should be an interface value)
 
-￼
+![](./images/70.%20TYPE%20SWITCH.jpg)
 
 Examples of .(type) usage in a switch:
 
@@ -4407,10 +4545,13 @@ Using struct embedding
 
 Reminder of struct inheritance:
 
+![](./images/71.%20INHERITANCE.jpg)
+
 Go doesnt use inheritance though, it uses composition, and in go composition is called embedding:
 
 There with inheritance it was a new object, with composition is is not a new type, is contains the same type.
 
+![](./images/72.%20EMBEDDING.jpg)
 
 https://turnoff.us/geek/inheritance-versus-composition/
 
@@ -4448,8 +4589,26 @@ Back to promoted methods:
 
 EG a product type
 
+![](./images/73.%20package%20main.jpg)
+
+![](./images/74.%20type%20book%20struct.jpg)
+
 update the book's print t pointer
 
+![](./images/74.%20type%20book%20struct.jpg)
 
+![](./images/75.%20product.jpg)
 
+![](./images/76.%20LearnGoProgramming.com%20%20%40inancgumus.jpg)
 
+![](./images/77.%20LearnGoProgramming.com%20%20%40inancgumus%202.jpg)
+
+![](./images/78.%20LearnGoProgramming.com.jpg)
+
+![](./images/79.%20package%20main%203.jpg)
+
+Fix errors
+
+![](./images/79.%20errors%20package%20main.jpg)
+
+![](./images/80.%20PROMOTED%20METHODS.jpg)
