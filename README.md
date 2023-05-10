@@ -2,6 +2,14 @@
 
 The complete bootcamp course
 
+## Creating a new go project
+
+
+	$ go mod init github.com/cariza/dnsproxy
+	
+	$ go mod tidy
+	
+
 ## Getting started
 
 Get repos with go get:
